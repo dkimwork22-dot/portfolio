@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Kim | Engineering Portfolio</title>
+    <style>
+        :root {
+            --blue: #007AFF;
+            --black: #0b0e14;
+            --card-bg: #161b22;
+            --text-white: #ffffff;
+            --text-dim: #8b949e;
+            --border: #30363d;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--black); color: var(--text-white); margin: 0; scroll-behavior: smooth; }
+        
+        header {
+            padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(11, 14, 20, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border);
+        }
+
+        .name-brand { font-size: 1.4rem; font-weight: 800; text-transform: uppercase; }
+        .name-kim { color: var(--blue); }
+        nav a { color: var(--text-white); text-decoration: none; margin-left: 20px; font-size: 0.85rem; font-weight: 600; }
+
+        .container { max-width: 1100px; margin: auto; padding: 40px 5%; }
+        h2 { border-left: 4px solid var(--blue); padding-left: 15px; text-transform: uppercase; letter-spacing: 1px; margin-top: 60px; }
+
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: 0.3s; }
+        .card:hover { border-color: var(--blue); transform: translateY(-5px); }
+        .card-img { width: 100%; height: 220px; object-fit: cover; background: #000; }
+        .card-content { padding: 20px; }
+
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
+        .modal-content { background: var(--card-bg); margin: 2% auto; padding: 40px; border: 1px solid var(--blue); width: 90%; max-width: 900px; border-radius: 15px; position: relative; }
+        .close { color: white; position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; }
+        .modal-main-img { width: 100%; border-radius: 10px; margin-bottom: 25px; border: 1px solid var(--border); max-height: 500px; object-fit: contain; background: #000; }
+
+        .btn { display: inline-block; margin-top: 15px; color: var(--blue); font-weight: 700; text-decoration: none; border: 1px solid var(--blue); padding: 8px 16px; border-radius: 5px; }
+        .tag { color: var(--blue); font-family: monospace; font-size: 0.7rem; background: rgba(0, 122, 255, 0.1); padding: 2px 6px; border-radius: 4px; margin-right: 5px; }
+        
+        .contact-list { list-style: none; padding: 0; }
+        .contact-list li { margin-bottom: 15px; font-size: 1.1rem; }
+        .contact-list strong { color: var(--blue); margin-right: 10px; text-transform: uppercase; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="name-brand">DANIEL <span class="name-kim">KIM</span></div>
+    <nav><a href="#projects">Portfolio</a><a href="#resume">Experience</a><a href="#contact">Contact</a></nav>
+</header>
+
+<div class="container">
+    <section id="projects">
+        <h2>Technical Portfolio</h2>
+        <div class="project-grid">
+            <div class="card" onclick="openModal('modal1')">
+                <img src="IMG_9674.jpg" class="card-img">
+                <div class="card-content">
+                    <span class="tag">Abaqus FEA</span><span class="tag">Fortran</span>
+                    <h3>Non-Conformal Deposition</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Heat distribution optimization for complex A6061 repairs.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('modal2')">
+                <img src="IMG_9675.jpg" class="card-img">
+                <div class="card-content">
+                    <span class="tag">G-Code</span><span class="tag">SLS</span>
+                    <h3>Dual Laser SLS System</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Synchronizing dual-laser sources for consistent fusion.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('modal3')">
+                <img src="robot.jpg" class="card-img" onerror="this.src='https://via.placeholder.com/400x220?text=ABB+Robot+Cell'">
+                <div class="card-content">
+                    <span class="tag">RobotStudio</span><span class="tag">ABB</span>
+                    <h3>6-DOF Robot Setup</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Automated welding/3D printing for aerospace repair.</p>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('modal4')">
+                <img src="fsae.jpg" class="card-img" onerror="this.src='https://via.placeholder.com/400x220?text=FSAE+Dynamics'">
+                <div class="card-content">
+                    <span class="tag">PID</span><span class="tag">Simulink</span>
+                    <h3>FSAE Vehicle Dynamics</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Braking and acceleration control systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <h2>Experience</h2>
+        <div style="background: #0d1117; padding: 30px; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px;">
+            <p><strong>Research Assistant</strong> | Smarture Lab (UIC) | 2025 – Present</p>
+            <p><strong>Mechanical Intern</strong> | SK Telecom (South Korea) | May 2024 – Aug 2024</p>
+            <a href="Daniel Kim - CV (1).pdf" target="_blank" class="btn">View Technical CV (PDF)</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <ul class="contact-list">
+            <li><strong>Email:</strong> dkimwork22@gmail.com / dkim369@uic.edu</li>
+            <li><strong>Phone:</strong> 331-305-1120</li>
+            <li><strong>Status:</strong> U.S. Citizen</li>
+            <li><strong>Location:</strong> Chicago, IL</li>
+        </ul>
+    </section>
+</div>
+
+<div id="modal1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal1')">&times;</span><img src="IMG_9674.jpg" class="modal-main-img"><h2>Non-Conformal Deposition</h2><p>Used Abaqus FEA + custom FORTRAN to improve weld quality by 10%. Designed test surfaces using CNC 3D contouring.</p></div></div>
+<div id="modal2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal2')">&times;</span><img src="IMG_9675.jpg" class="modal-main-img"><h2>Dual Laser SLS</h2><p>Modified G-code toolpaths to synchronize two laser sources, optimizing scan strategies and exposure timing.</p></div></div>
+<div id="modal3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal3')">&times;</span><img src="robot.jpg" class="modal-main-img"><h2>ABB IRB 1200 Setup</h2><p>Configured robotic welding cell with Miller Continuum Weld Kit. Positional accuracy within ±0.5 mm tolerance.</p></div></div>
+<div id="modal4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal4')">&times;</span><img src="fsae.jpg" class="modal-main-img"><h2>FSAE Vehicle Dynamics</h2><p>Designed PID braking controls cutting lap time 13%. Led restoration of the 1996 competition car.</p></div></div>
+
+<script>
+    function openModal(id) { document.getElementById(id).style.display = "block"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    window.onclick = function(e) { if(e.target.className === 'modal') e.target.style.display = "none"; }
+</script>
+
+</body>
+</html>
